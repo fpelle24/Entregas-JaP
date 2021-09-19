@@ -16,13 +16,14 @@ function listadoDeAutos(array) {
             ((max == undefined) || (max != undefined && parseInt(auto.cost) <= max))) {
 
 
-            listado = `<a href="#" ><div style="border: 2px solid grey;
+            listado = `<div style="border: 2px solid grey;
             border-radius: 12px;"> Nombre:` + " " + auto.name + `<br/>` +
                 `Descripción:` + " " + auto.description + ` <br/> ` +
                 `Precio: ` + " " + auto.cost + " " + auto.currency + `<br/> ` +
                 `Relevancia: ` + " " + auto.soldCount + " " + ` </br> ` +
                 `<img height="200px" src=   "` + auto.imgSrc + `" ` + ` <br/></br>
-                   </div> </br> </a>  `
+                <button id="Ver mas" onclick="infoauto(` + auto.id + `);" type="button">Más Info</button>
+                   </div> </br>  `
 
             document.getElementById("lista").innerHTML += listado;
         }
@@ -130,3 +131,7 @@ document.getElementById("limpiar").addEventListener("click", function () {
 
 });
 
+function infoauto(autoid) {
+    window.localStorage.setItem('auto-id', autoid);
+    window.location = 'product-info.html';
+}
