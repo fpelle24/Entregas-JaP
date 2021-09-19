@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     let autoid = window.localStorage.getItem('auto-id');
 
-    getJSONData( + autoid + ".json").then(function (resultObj) {
+    getJSONData( PRODUCT_INFO_URL + `/` + autoid + ".json").then(function (resultObj) {
         if (resultObj.status === "ok") {
             productsarray = resultObj.data;
 
@@ -24,16 +24,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
         document.getElementById("lista2").innerHTML = "";
 
         let listado = [];
+        let foto = "foto/" + auto.name + "/1.jpg" + `</br>` + "2.jpg" + `</br>` + "3.jpg"
 
 
-        listado = `<a href="" ><div style="border: 2px solid grey;
+        listado = `<div style="border: 2px solid grey;
                 border-radius: 12px;"> Nombre:` + " " + auto.name + `<br/>` +
             `Descripción:` + " " + auto.description + ` <br/> ` +
             `Precio: ` + " " + auto.cost + " " + auto.currency + `<br/> ` +
             `Relevancia: ` + " " + auto.soldCount + " " + ` </br> ` +
-            `<img height="200px" src=   "` + auto.imgSrc + `" ` + ` <br/></br>
+            `<img height="200px" src=   "` + foto + `" ` + ` <br/></br>
                    
-                       </div> </br> </a>  `
+                       </div> </br> `
 
         document.getElementById("lista2").innerHTML += listado;
     }
