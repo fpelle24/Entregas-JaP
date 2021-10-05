@@ -16,14 +16,23 @@ function listadoDeAutos(array) {
             ((max == undefined) || (max != undefined && parseInt(auto.cost) <= max))) {
 
 
-            listado = `<div style="border: 2px solid grey;
-            border-radius: 12px;"> Nombre:` + " " + auto.name + `<br/>` +
-                `Descripción:` + " " + auto.description + ` <br/> ` +
-                `Precio: ` + " " + auto.cost + " " + auto.currency + `<br/> ` +
-                `Relevancia: ` + " " + auto.soldCount + " " + ` </br> ` +
-                `<img height="200px" src=   "` + auto.imgSrc + `" ` + ` <br/></br>
-                <button id="Ver mas" onclick="infoauto(` + auto.id + `);" type="button">Más Info</button>
-                   </div> </br>  `
+            listado = `
+            <div class="row">
+                <div class="col-3">
+                    <img src="` + auto.imgSrc + `" alt="` + auto.description + `" class="img-thumbnail">
+                </div>
+                <div class="col">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h4 class="mb-1">`+ auto.name +`</h4>
+                    </div>
+                    <p class="mb-1">` + auto.description + `</p>
+                    <p class="mb-1">` + auto.cost + auto.currency + `</p>
+                    <p class="mb-1"> Relevancia:` + auto.soldCount + `</p>
+                    <button id="Ver mas" onclick="infoauto(` + auto.id + `);" type="button">Más Info</button>
+                </div>
+            </div>`
+        
+        
 
             document.getElementById("lista").innerHTML += listado;
         }
@@ -31,8 +40,14 @@ function listadoDeAutos(array) {
 
 };
 
-
-
+//<div style="border: 2px solid grey;
+           //border-radius: 12px;"> Nombre:` + " " + auto.name + `<br/>` +
+             //   `Descripción:` + " " + auto.description + ` <br/> ` +
+               // `Precio: ` + " " + auto.cost + " " + auto.currency + `<br/> ` +
+                //`Relevancia: ` + " " + auto.soldCount + " " + ` </br> ` +
+                //`<img height="200px" src=   "` + auto.imgSrc + `" ` + ` <br/></br>
+               // <button id="Ver mas" onclick="infoauto(` + auto.id + `);" type="button">Más Info</button>
+                 //  </div> </br> 
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
